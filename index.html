@@ -1440,7 +1440,7 @@
                   <circle cx="12" cy="12" r="10"></circle>
                   <path
                     d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
-                  <path d="M2 12h20"></path></svg>Vienna Area, Austria, CET</a>
+                  <path d="M2 12h20"></path></svg>Vienna Area, Austria</a>
             </p>
             <p
               class="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground">
@@ -1908,5 +1908,86 @@
         </section>
       </section>
     </main>
+    <script>
+      (() => {
+        const translations = {
+          "Full Stack Engineer & Solution Architect": "Full Stack Engineer & Solution Architect",
+          "Vienna Area, Austria": "Region Wien, Österreich",
+          "About": "Über mich",
+          "Work Experience": "Berufserfahrung",
+          "Education": "Ausbildung",
+          "Skills": "Kenntnisse",
+          "I am a passionate Full Stack Engineer with a keen interest in end-to-end product development. My drive stems from tackling and solving complex business problems through requirements engineering and business analysis, followed by their practical implementation.": "Ich bin ein leidenschaftlicher Full Stack Engineer mit großem Interesse an ganzheitlicher, End-to-End Produktentwicklung. Mein Antrieb ist es, komplexe Geschäftsprobleme durch Anforderungsmanagement und Geschäftsanalyse zu erfassen und zu lösen – und sie anschließend praktisch umzusetzen.",
+          "08/2023 - present": "08/2023 - heute",
+          "04/2018 - present": "04/2018 - heute",
+          "Freelance Senior Full Stack Developer / Deployed Technical Expert": "Freiberuflicher Senior Full Stack Developer / Entsandter technischer Experte",
+          "Most recently, I am working as a contractor for a governmental body working on Java (Spring Boot) and C# .NET projects. Other responsibilities include Requirements Engineering and making applications cloud ready.": "Derzeit arbeite ich als Freelancer für eine öffentliche Institution an Java- (Spring Boot) und C#-.NET-Projekten. Zu meinen weiteren Aufgaben gehören Anforderungsmanagement und die Cloud-Readiness von Anwendungen.",
+          "Freelance Senior Full Stack Developer / Lead Developer": "Freiberuflicher Senior Full Stack Developer / Lead Developer",
+          "As a Solution Designer (contractor, 2020-2023) with a leading Austrian telecommunications provider, I led a team of four professionals in developing various technological solutions. Our focus was on building automations, backend components, sales funnels, and website components. These were primarily developed using Node.js and TypeScript, and deployed on a Kubernetes platform. Prior to my role as a Development Lead, I worked as a Full Stack Developer, where I honed my skills in both frontend and backend development. My expertise spans across technologies such as React, Angular, Node.js, Docker, Redis, RabbitMQ, and Kubernetes.": "Als Solution Designer (Freelancer, 2020–2023) bei einem führenden österreichischen Telekommunikationsanbieter leitete ich ein Team aus vier Fachkräften bei der Entwicklung unterschiedlicher technologischer Lösungen. Unser Fokus lag auf Automatisierungen, Backend-Komponenten, Sales-Funnels und Website-Komponenten. Diese wurden überwiegend mit Node.js und TypeScript entwickelt und auf einer Kubernetes-Plattform bereitgestellt. Vor meiner Rolle als Development Lead arbeitete ich als Full Stack Developer und vertiefte meine Kenntnisse in Frontend- und Backend-Entwicklung. Meine Expertise umfasst Technologien wie React, Angular, Node.js, Docker, Redis, RabbitMQ und Kubernetes.",
+          "Freelancer": "Freiberufler",
+          "Freelance Senior Full Stack Developer": "Freiberuflicher Senior Full Stack Developer",
+          "Apart from the bigger projects above, I engaged in diverse projects ranging from simple websites to complex platforms and automation software in the printing industry, utilizing technologies like C#.NET, React, Angular, R, jQuery, HTML, CSS, SCSS, JavaScript, Visual Basic, Docker, and Kubernetes.": "Neben den größeren, oben genannten Projekten war ich an vielfältigen Vorhaben beteiligt – von einfachen Websites bis zu komplexen Plattformen und Automatisierungssoftware für die Druckindustrie. Dabei kamen Technologien wie C#.NET, React, Angular, R, jQuery, HTML, CSS, SCSS, JavaScript, Visual Basic, Docker und Kubernetes zum Einsatz.",
+          "Software Engineer": "Softwareentwickler",
+          "As a Software Engineer, I have developed web platforms encompassing both frontend and backend technologies, including React, vanilla JavaScript, HTML, SCSS, and PHP.": "Als Softwareentwickler habe ich Web-Plattformen entwickelt, die Frontend- und Backend-Technologien wie React, Vanilla JavaScript, HTML, SCSS und PHP umfassen.",
+          "Univesity of Vienna": "Universität Wien",
+          "Master's Degree in Psychology": "Masterstudium Psychologie",
+          "Master thesis topic: Detecting emotions using fNIRS and AI": "Thema der Masterarbeit: Emotionserkennung mittels fNIRS und KI",
+          "Lead Dev": "Lead Developer",
+          "Lead Developer": "Lead Developer",
+          "Business Analysis": "Geschäftsanalyse",
+          "Machine Learning": "Maschinelles Lernen",
+          "Requirements Engineering": "Anforderungsmanagement",
+          "Software Design": "Softwarearchitektur"
+        };
+
+        const englishDescription = "I am a passionate Full Stack Engineer with a keen interest in end-to-end product development. My drive stems from tackling and solving complex business problems through requirements engineering and business analysis, followed by their practical implementation.";
+        const germanDescription = "Ich bin ein leidenschaftlicher Full Stack Engineer mit großem Interesse an ganzheitlicher, End-to-End Produktentwicklung. Mein Antrieb ist es, komplexe Geschäftsprobleme durch Anforderungsmanagement und Geschäftsanalyse zu erfassen und zu lösen – und sie anschließend praktisch umzusetzen.";
+        const normalise = (text) => text.replace(/\s+/g, " ").trim();
+        const switcher = document.createElement("div");
+        switcher.className = "language-switcher print:hidden";
+        switcher.setAttribute("role", "group");
+        switcher.setAttribute("aria-label", "Language selector");
+        switcher.innerHTML = '<button type="button" data-language="en" aria-pressed="false">EN</button><span aria-hidden="true">/</span><button type="button" data-language="de" aria-pressed="false">DE</button>';
+        document.querySelector("main").insertAdjacentElement("afterbegin", switcher);
+
+        const style = document.createElement("style");
+        style.textContent = `
+          .language-switcher { display: flex; justify-content: flex-end; align-items: center; gap: .35rem; margin: 0 auto 1rem; max-width: 42rem; font: 600 .75rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+          .language-switcher button { border: 0; border-radius: .35rem; background: transparent; color: #6b7280; cursor: pointer; padding: .3rem .45rem; }
+          .language-switcher button:hover, .language-switcher button:focus-visible { background: #f3f4f6; color: #111827; outline: none; }
+          .language-switcher button[aria-pressed="true"] { background: #111827; color: #fff; }
+        `;
+        document.head.append(style);
+
+        const textNodes = [];
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          const english = normalise(node.nodeValue);
+          if (translations[english]) textNodes.push({ node, english, original: node.nodeValue });
+        }
+
+        const description = document.querySelector('meta[name="description"]');
+        function setLanguage(language) {
+          const isGerman = language === "de";
+          textNodes.forEach(({ node, english, original }) => {
+            node.nodeValue = isGerman ? translations[english] : original;
+          });
+          document.documentElement.lang = language;
+          if (description) description.content = isGerman ? germanDescription : englishDescription;
+          switcher.setAttribute("aria-label", isGerman ? "Sprachauswahl" : "Language selector");
+          switcher.querySelectorAll("button").forEach((button) => {
+            button.setAttribute("aria-pressed", String(button.dataset.language === language));
+          });
+        }
+
+        switcher.addEventListener("click", (event) => {
+          const button = event.target.closest("button[data-language]");
+          if (button) setLanguage(button.dataset.language);
+        });
+
+        setLanguage((navigator.language || navigator.userLanguage || "en").toLowerCase().startsWith("de") ? "de" : "en");
+      })();
+    </script>
   </body>
 </html>
